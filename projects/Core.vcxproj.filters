@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Transport">
+      <UniqueIdentifier>{9efacdc6-3265-4be5-a1c1-c6d11b197b91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{b27b9b89-717c-480b-8330-66c2f5e5bfd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Socket">
+      <UniqueIdentifier>{129dab0c-334a-479e-a90d-07d7f23d7b70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Common">
+      <UniqueIdentifier>{9d4ae2c5-9616-40ef-a857-2766ba2b0177}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\Core\Transport\Address.cpp">
+      <Filter>Transport\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Core\Transport\UdpSocket.cpp">
+      <Filter>Transport\Socket</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\Core\Common\WaveDefines.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Core\Transport\Address.h">
+      <Filter>Transport\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Core\Transport\SocketHelper.h">
+      <Filter>Transport\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Core\Transport\UdpSocket.h">
+      <Filter>Transport\Socket</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

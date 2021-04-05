@@ -1,11 +1,11 @@
 #pragma once
-#include "WaveDefines.h"
+#include "Core/Common/WaveDefines.h"
 
 namespace Wave
 {
 	namespace SocketHelper
 	{
-		static bool InitializeSockets()
+		static bool InitializeSocket()
 		{
 #if PLATFORM == PLATFORM_WINDOWS
 			WSADATA WsaData;
@@ -17,7 +17,7 @@ namespace Wave
 #endif
 		}
 
-		static void ShutdownSockets()
+		static void ShutdownSocket()
 		{
 #if PLATFORM == PLATFORM_WINDOWS
 			WSACleanup();

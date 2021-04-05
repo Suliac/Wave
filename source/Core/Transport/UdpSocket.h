@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Address.h"
-#include "WaveDefines.h"
+#include "Core/Common/WaveDefines.h"
+#include "Core/Transport/Address.h"
 
 namespace Wave
 {
