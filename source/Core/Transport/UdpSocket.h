@@ -5,21 +5,21 @@
 
 namespace Wave
 {
-	class UdpSocket
-	{
-	public:
-		UdpSocket();
-		~UdpSocket();
+    class UdpSocket
+    {
+    public:
+        UdpSocket();
+        ~UdpSocket();
 
-		bool Open(unsigned short port);
-		bool Close();
+        bool Open(unsigned short port);
+        bool Close();
         inline bool IsOpen() const { return m_handle != INVALID_SOCKET; }
 
-		bool Send(const Address& destination, const void* data, int size);
-		int Receive(Address& sender, void* data, int size);
+        bool Send(const Address& destination, const void* data, int size);
+        int Receive(Address& sender, void* data, int size);
 
-	private:
-		int m_handle;
-	};
+    private:
+        int m_handle;
+    };
 }
 

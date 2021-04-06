@@ -3,23 +3,23 @@
 
 namespace Wave
 {
-	namespace SocketHelper
-	{
-		static bool InitializeSocket()
-		{
+    namespace SocketHelper
+    {
+        static bool InitializeSocket()
+        {
 #if PLATFORM == PLATFORM_WINDOWS
-			WSADATA WsaData;
-			return WSAStartup(MAKEWORD(2, 2), &WsaData) == NO_ERROR;
+            WSADATA WsaData;
+            return WSAStartup(MAKEWORD(2, 2), &WsaData) == NO_ERROR;
 #else
-			return true;
+            return true;
 #endif
-		}
+        }
 
-		static void ShutdownSocket()
-		{
+        static void ShutdownSocket()
+        {
 #if PLATFORM == PLATFORM_WINDOWS
-			WSACleanup();
+            WSACleanup();
 #endif
-		}
-	}
+        }
+    }
 }
