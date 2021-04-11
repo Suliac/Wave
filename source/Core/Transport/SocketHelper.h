@@ -5,6 +5,11 @@ namespace Wave
 {
     namespace SocketHelper
     {
+        /**
+         * \brief Initialize our socket system
+         *
+         * \return true if we successfully init our socket system
+         */
         static bool InitializeSocket()
         {
 #if PLATFORM == PLATFORM_WINDOWS
@@ -15,6 +20,11 @@ namespace Wave
 #endif
         }
 
+        /**
+         * \brief Shutdown our socket system
+         *
+         * \return true if we successfully init our socket system
+         */
         static void ShutdownSocket()
         {
 #if PLATFORM == PLATFORM_WINDOWS

@@ -11,31 +11,35 @@ namespace Wave
 
     UdpSocket::~UdpSocket()
     {
+        if (IsOpen())
+        {
+            Close();
+        }
     }
 
-    bool UdpSocket::Open(unsigned short port)
+    SocketResult UdpSocket::Open(const IPEndPoint& endPoint, bool isNonBlocking)
     {
         m_handle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 
         if (m_handle <= 0)
         {
-            std::cout << "failed to create socket" << std::endl;
-            return false;
+            LogLastSocketError();
+            return SocketResult::CreationFailed;
         }
 
         sockaddr_in address;
         address.sin_family = AF_INET;
-        address.sin_addr.s_addr = INADDR_ANY;
-        address.sin_port = htons((unsigned short)port);
+        address.sin_addr.s_addr = endPoint.GetAddress();
+        address.sin_port = htons(endPoint.GetPort());
 
         if (bind(m_handle, (const sockaddr*)&address, sizeof(sockaddr_in)) < 0)
         {
-            std::cout << "failed to bind socket" << std::endl;
-            return false;
+            LogLastSocketError();
+            return SocketResult::BindFailed;
         }
 
 #if PLATFORM == PLATFORM_MAC || PLATFORM == PLATFORM_UNIX
-        int nonBlocking = 1;
+        int32_t nonBlocking = 1;
         if (fcntl(m_handle, F_SETFL, O_NONBLOCK, nonBlocking) == -1)
         {
             printf("failed to set non-blocking\n");
@@ -45,53 +49,66 @@ namespace Wave
         DWORD nonBlocking = 1;
         if (ioctlsocket(m_handle, FIONBIO, &nonBlocking) != 0)
         {
-            std::cout << "failed to set non-blocking" << std::endl;
-            return false;
+            LogLastSocketError();
+            return SocketResult::SetBlockingStateFailed;
         }
 #endif
-        return true;
+        return SocketResult::OK;
     }
 
-    bool UdpSocket::Close()
+    SocketResult UdpSocket::Close()
     {
 #if PLATFORM == PLATFORM_MAC || PLATFORM == PLATFORM_UNIX
-        return close(m_handle);
+        if(!close(m_handle))
 #elif PLATFORM == PLATFORM_WINDOWS
-        return closesocket(m_handle);
+        if (!closesocket(m_handle))
 #endif
+        {
+            LogLastSocketError();
+            return SocketResult::CloseFailed;
+        }
+        return SocketResult::OK;
     }
 
-    bool UdpSocket::Send(const Address& destination, const void* data, int size)
+    SocketResult UdpSocket::Send(const IPEndPoint& destination, const void* data, int32_t size)
     {
         sockaddr_in addr;
         addr.sin_family = AF_INET;
         addr.sin_addr.s_addr = htonl(destination.GetAddress());
         addr.sin_port = htons(destination.GetPort());
 
-        int sentBytes = sendto(m_handle, (const char*)data, size, 0, (sockaddr*)&addr, sizeof(sockaddr_in));
+        int32_t sentBytes = sendto(m_handle, (const char*)data, size, 0, (sockaddr*)&addr, sizeof(sockaddr_in));
         if (sentBytes != size)
         {
-            std::cout << "failed to send packet" << std::endl;
-            return false;
+            LogLastSocketError();
+            return SocketResult::SendFailed;
         }
 
-        return true;
+        return SocketResult::OK;
     }
 
-    int UdpSocket::Receive(Address& sender, void* data, int size)
+    SocketResult UdpSocket::Receive(IPEndPoint& source, void* data, int32_t size, int32_t& bytesRecv)
     {
 #if PLATFORM == PLATFORM_WINDOWS
-        typedef int socklen_t;
+        typedef int32_t socklen_t;
 #endif
         sockaddr_in from;
         socklen_t fromLength = sizeof(from);
 
-        int byteReceived = recvfrom(m_handle, (char*)data, size, 0, (sockaddr*)&from, &fromLength);
-        if (byteReceived > 0)
+        bytesRecv = recvfrom(m_handle, (char*)data, size, 0, (sockaddr*)&from, &fromLength);
+        if (bytesRecv > 0)
         {
-            sender.SetAddr(ntohl(from.sin_addr.s_addr), ntohs(from.sin_port));
+            source.SetAddr(ntohl(from.sin_addr.s_addr), ntohs(from.sin_port));
         }
 
-        return byteReceived;
+        return SocketResult::OK;
+    }
+
+    void UdpSocket::LogLastSocketError() const
+    {
+#if PLATFORM == PLATFORM_WINDOWS
+        // TODO : replace cmd write by a true log system !
+        std::cout << "Socket error : " << std::to_string(WSAGetLastError()) << std::endl;
+#endif
     }
 }
