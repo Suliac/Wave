@@ -150,12 +150,14 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\Core\Transport\Datagram.cpp" />
     <ClCompile Include="..\source\Core\Transport\IPEndPoint.cpp" />
     <ClCompile Include="..\source\Core\Transport\Buffer.cpp" />
     <ClCompile Include="..\source\Core\Transport\UdpSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\Core\Common\WaveDefines.h" />
+    <ClInclude Include="..\source\Core\Transport\Datagram.h" />
     <ClInclude Include="..\source\Core\Transport\IPEndPoint.h" />
     <ClInclude Include="..\source\Core\Transport\Buffer.h" />
     <ClInclude Include="..\source\Core\Transport\ISocket.h" />

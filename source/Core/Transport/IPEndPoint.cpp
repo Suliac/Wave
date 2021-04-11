@@ -3,7 +3,7 @@
 namespace Wave
 {
     IPEndPoint::IPEndPoint()
-        : IPEndPoint(127, 0, 0, 1, 0)
+        : IPEndPoint(0, 0, 0, 0, 0)
     {
     }
 

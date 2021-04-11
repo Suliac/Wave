@@ -33,7 +33,17 @@ namespace Wave
         return false;
     }
 
+    void Buffer::Reset()
+    {
+        m_index = 0;
+    }
+
     const uint8_t* Buffer::Get() const
+    {
+        return m_data;
+    }
+
+    uint8_t* Buffer::GetPtr()
     {
         return m_data;
     }

@@ -2,6 +2,7 @@
 
 #include "Core/Common/WaveDefines.h"
 #include "Core/Transport/IPEndPoint.h"
+#include "Core/Transport/Datagram.h"
 
 namespace Wave
 {
@@ -27,7 +28,7 @@ namespace Wave
         virtual SocketResult Open(const IPEndPoint& endPoint, bool isNonBlocking = true) = 0;
         virtual SocketResult Close() = 0;
         virtual bool IsOpen() const = 0;
-        virtual SocketResult Send(const IPEndPoint& destination, const void* data, int32_t size) = 0;
-        virtual SocketResult Receive(IPEndPoint& source, void* data, int32_t size, int32_t& bytesRecv) = 0;
+        virtual SocketResult SendTo(const Datagram& datagram, int32_t size) const = 0;
+        virtual SocketResult ReceiveFrom(Datagram& datagram, int32_t& bytesRecv) = 0;
 	};
 }

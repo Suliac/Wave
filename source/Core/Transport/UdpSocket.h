@@ -2,17 +2,18 @@
 
 #include "Core/Transport/ISocket.h"
 
+#if PLATFORM == PLATFORM_WINDOWS
 namespace Wave
 {    
     /**
-     * \class UdpSocket
-     * \brief Socket already setup for UDP communication
+     * \class UdpSocket_Windows
+     * \brief Socket already setup for UDP communication for the windows platform
     */
-    class UdpSocket : public ISocket
+    class UdpSocket_Windows : public ISocket
     {
     public:
-        UdpSocket();
-        ~UdpSocket();
+        UdpSocket_Windows();
+        ~UdpSocket_Windows();
 
         /**
          * \brief Open a new socket: create, bind, set blocking option for the socket
@@ -38,23 +39,28 @@ namespace Wave
         /**
          * \brief Send a set of data via a socket
          *
-         * \param destination the IP adress of our destination
-         * \param data the array of the data to send
+         * \param datagram our datagram we want to send containing the ip endpoint info & the data's buffer to send
          * \param size the size of the data to send
          * \return SocketResult the result to know if an error occured
          */
-        virtual SocketResult Send(const IPEndPoint& destination, const void* data, int32_t size) override final;
+        virtual SocketResult SendTo(const Datagram& datagram, int32_t size) const override final;
+        
+        /**
+         * \brief Send a set of data via a socket where the size of data to send is the buffer's size
+         *
+         * \param datagram our datagram we want to send containing the ip endpoint info & the data's buffer to send
+         * \return SocketResult the result to know if an error occured
+         */
+        SocketResult SendTo(const Datagram& datagram) const;
 
         /**
-         * \brief Receive a set of data from a socket
+         * \brief Receive a set of data from a socket with the size of the datagram's buffer
          *
-         * \param sender will be set as the source's address of the recv packet
-         * \param data will be set as the data we just received
-         * \param size the max size of the data we can receive
+         * \param datagram will be set with the data & the source's address of the recv packet.
          * \param bytesRecv he number of bytes we received 
          * \return SocketResult the result to know if an error occured
          */
-        virtual SocketResult Receive(IPEndPoint& source, void* data, int32_t size, int32_t& bytesRecv) override final;
+        virtual SocketResult ReceiveFrom(Datagram& datagram, int32_t& bytesRecv) override final;
 
     private:
         /**
@@ -67,4 +73,5 @@ namespace Wave
         SOCKET m_handle;
     };
 }
+#endif // PLATFORM == PLATFORM_WINDOWS
 

@@ -24,6 +24,9 @@
     <ClCompile Include="..\source\Core\Transport\Buffer.cpp">
       <Filter>Transport\Common</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\Core\Transport\Datagram.cpp">
+      <Filter>Transport\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\Core\Common\WaveDefines.h">
@@ -43,6 +46,9 @@
     </ClInclude>
     <ClInclude Include="..\source\Core\Transport\ISocket.h">
       <Filter>Transport\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Core\Transport\Datagram.h">
+      <Filter>Transport\Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

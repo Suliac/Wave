@@ -10,6 +10,7 @@ namespace Wave
     class Buffer
     {
     public:
+        Buffer() = delete;
         Buffer(size_t bufferSize);
 
         /**
@@ -30,6 +31,8 @@ namespace Wave
          */
         bool Copy(uint8_t* data, size_t dataSize) const;
 
+        void Reset();
+
         /**
          * \brief Get our current buffer of data
          * \return All the data our buffer contains
@@ -37,9 +40,15 @@ namespace Wave
         const uint8_t* Get() const;
 
         /**
+         * \brief Get our current buffer of data
+         * \return All the data our buffer contains
+         */
+        uint8_t* GetPtr();
+
+        /**
          * \brief Get the current size of our buffer
          */
-        inline uint8_t Size() const { return m_size; }
+        inline size_t Size() const { return m_size; }
         
         /**
          * \brief Get the current index for our buffer, each Insert is increasing the index
