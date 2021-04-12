@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Transport/ISocket.h"
+#include "Wave/Transport/Socket/ISocket.h"
 
 #if PLATFORM == PLATFORM_WINDOWS
 namespace Wave

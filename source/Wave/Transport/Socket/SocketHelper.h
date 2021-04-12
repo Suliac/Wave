@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Common/WaveDefines.h"
+#include "Wave/Common/WaveDefines.h"
 
 namespace Wave
 {

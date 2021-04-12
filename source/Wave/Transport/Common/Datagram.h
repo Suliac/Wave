@@ -1,6 +1,6 @@
 #pragma once
-#include <Core/Transport/Buffer.h>
-#include <Core/Transport/IPEndPoint.h>
+#include "Wave/Transport/Common/Buffer.h"
+#include "Wave/Transport/Common/IPEndPoint.h"
 
 namespace Wave
 {

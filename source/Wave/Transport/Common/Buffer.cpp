@@ -1,6 +1,5 @@
-#include "Buffer.h"
+#include "Wave/Transport/Common/Buffer.h"
 #include <memory.h>
-#include <assert.h>
 
 namespace Wave
 {

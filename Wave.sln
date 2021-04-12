@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "projects\Core.vcxproj", "{C6336051-3F88-4BCF-8084-60D05C34ED89}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WaveTransport", "projects\WaveTransport.vcxproj", "{C6336051-3F88-4BCF-8084-60D05C34ED89}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DummyClient", "projects\DummyClient.vcxproj", "{733FC7EC-3863-4C04-8AEA-7DE909132496}"
 EndProject

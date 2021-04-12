@@ -15,40 +15,37 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\Core\Transport\IPEndPoint.cpp">
-      <Filter>Transport\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Core\Transport\UdpSocket.cpp">
-      <Filter>Transport\Socket</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Core\Transport\Buffer.cpp">
-      <Filter>Transport\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Core\Transport\Datagram.cpp">
-      <Filter>Transport\Common</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\source\Core\Common\WaveDefines.h">
+    <ClInclude Include="..\source\Wave\Common\WaveDefines.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Core\Transport\IPEndPoint.h">
+    <ClInclude Include="..\source\Wave\Transport\Common\Buffer.h">
       <Filter>Transport\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Core\Transport\SocketHelper.h">
-      <Filter>Transport\Socket</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Core\Transport\UdpSocket.h">
-      <Filter>Transport\Socket</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Core\Transport\Buffer.h">
+    <ClInclude Include="..\source\Wave\Transport\Common\Datagram.h">
       <Filter>Transport\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Core\Transport\ISocket.h">
-      <Filter>Transport\Socket</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Core\Transport\Datagram.h">
+    <ClInclude Include="..\source\Wave\Transport\Common\IPEndPoint.h">
       <Filter>Transport\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\Wave\Transport\Socket\ISocket.h">
+      <Filter>Transport\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Wave\Transport\Socket\SocketHelper.h">
+      <Filter>Transport\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Wave\Transport\Socket\UdpSocket.h">
+      <Filter>Transport\Socket</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\Wave\Transport\Common\Buffer.cpp">
+      <Filter>Transport\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Wave\Transport\Common\IPEndPoint.cpp">
+      <Filter>Transport\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Wave\Transport\Socket\UdpSocket.cpp">
+      <Filter>Transport\Socket</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

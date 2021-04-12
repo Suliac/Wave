@@ -1,7 +1,7 @@
 #include <stdio.h> // TODO : to remove
 #include <iostream> // TODO : to remove
 
-#include "Core/Transport/UdpSocket.h"
+#include "Wave/Transport/Socket/UdpSocket.h"
 
 #if PLATFORM == PLATFORM_WINDOWS
 namespace Wave

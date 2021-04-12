@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core/Common/WaveDefines.h"
-#include "Core/Transport/IPEndPoint.h"
-#include "Core/Transport/Datagram.h"
+#include "Wave/Common/WaveDefines.h"
+#include "Wave/Transport/Common/IPEndPoint.h"
+#include "Wave/Transport/Common/Datagram.h"
 
 namespace Wave
 {

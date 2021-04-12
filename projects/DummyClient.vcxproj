@@ -22,7 +22,7 @@
     <ClCompile Include="..\source\Test\DummyClient\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Core.vcxproj">
+    <ProjectReference Include="WaveTransport.vcxproj">
       <Project>{c6336051-3f88-4bcf-8084-60d05c34ed89}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -80,7 +80,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)bin\$(PlatformName)\</OutDir>
     <IntDir>$(SolutionDir)tmp\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformName)_$(Configuration)</TargetName>
     <IncludePath>$(SolutionDir)source;$(IncludePath)</IncludePath>
