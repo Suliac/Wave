@@ -2,6 +2,7 @@
 #include <iostream> // TODO : to remove
 
 #include "Wave/Transport/Socket/UdpSocket.h"
+#include "Wave/Common/Log/Log.h"
 
 #if PLATFORM == PLATFORM_WINDOWS
 namespace Wave
@@ -105,8 +106,7 @@ namespace Wave
 
     void UdpSocket_Windows::LogLastSocketError() const
     {
-        // TODO : replace cmd write by a true log system !
-        std::cout << "Socket error : " << std::to_string(WSAGetLastError()) << std::endl;
+        WAVE_ERROR("Socket error : %i", WSAGetLastError());
     }
 }
 #endif // PLATFORM == PLATFORM_WINDOWS

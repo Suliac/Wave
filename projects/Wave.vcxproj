@@ -23,7 +23,7 @@
     <ProjectGuid>{C6336051-3F88-4BCF-8084-60D05C34ED89}</ProjectGuid>
     <RootNamespace>Wave</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>WaveTransport</ProjectName>
+    <ProjectName>Wave</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -151,6 +151,9 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\source\Wave\Common\Log\CmdLogger.h" />
+    <ClInclude Include="..\source\Wave\Common\Log\Log.h" />
+    <ClInclude Include="..\source\Wave\Common\Log\LogHelper.h" />
     <ClInclude Include="..\source\Wave\Common\WaveDefines.h" />
     <ClInclude Include="..\source\Wave\Transport\Common\Buffer.h" />
     <ClInclude Include="..\source\Wave\Transport\Common\Datagram.h" />
@@ -160,6 +163,8 @@
     <ClInclude Include="..\source\Wave\Transport\Socket\UdpSocket.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\Wave\Common\Log\CmdLogger.cpp" />
+    <ClCompile Include="..\source\Wave\Common\Log\Log.cpp" />
     <ClCompile Include="..\source\Wave\Transport\Common\Buffer.cpp" />
     <ClCompile Include="..\source\Wave\Transport\Common\IPEndPoint.cpp" />
     <ClCompile Include="..\source\Wave\Transport\Socket\UdpSocket.cpp" />

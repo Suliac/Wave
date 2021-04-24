@@ -178,7 +178,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\projects\WaveTransport.vcxproj">
+    <ProjectReference Include="..\..\..\projects\Wave.vcxproj">
       <Project>{c6336051-3f88-4bcf-8084-60d05c34ed89}</Project>
     </ProjectReference>
   </ItemGroup>

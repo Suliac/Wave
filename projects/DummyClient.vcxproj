@@ -22,7 +22,7 @@
     <ClCompile Include="..\source\Test\DummyClient\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="WaveTransport.vcxproj">
+    <ProjectReference Include="Wave.vcxproj">
       <Project>{c6336051-3f88-4bcf-8084-60d05c34ed89}</Project>
     </ProjectReference>
   </ItemGroup>
