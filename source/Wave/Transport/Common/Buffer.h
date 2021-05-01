@@ -12,6 +12,7 @@ namespace Wave
     public:
         Buffer() = delete;
         Buffer(size_t bufferSize);
+        Buffer(const Buffer& cpy);
 
         /**
          * \brief Insert data (as copy) at current index, and increase the index
@@ -22,14 +23,15 @@ namespace Wave
          */
         bool Insert(const uint8_t* dataToInsert, size_t dataSize);
 
+        bool Insert(const Buffer& bufferToInsert);
+
         /**
-         * \brief Select data from our buffer and copy them inside the given data param
+         * \brief Select data from an extern buffer and copy its data
          *
-         * \param data the array where the data will be copied
-         * \param dataSize the size of the data you want to copy
+         * \param bufferCpy The buffer where the data will be copied
          * \return true if we successfully copied the data
          */
-        bool Copy(uint8_t* data, size_t dataSize) const;
+        bool CopyFrom(const Buffer& bufferToCpy);
 
         void Reset();
 

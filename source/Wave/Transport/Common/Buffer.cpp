@@ -10,6 +10,14 @@ namespace Wave
         m_index = 0;
     }
 
+    Buffer::Buffer(const Buffer& cpy)
+    {
+        m_data = new uint8_t[cpy.Size()];
+        m_size = cpy.Size();
+        m_index = 0;
+        Insert(cpy);
+    }
+
     bool Buffer::Insert(const uint8_t* dataToInsert, size_t dataSize)
     {
         if (m_index + dataSize <= m_size)
@@ -22,14 +30,15 @@ namespace Wave
         return false;
     }
 
-    bool Buffer::Copy(uint8_t* data, size_t dataSize) const
+    bool Buffer::Insert(const Buffer& bufferToInsert)
     {
-        if (m_index + dataSize <= m_size)
-        {
-            memcpy(data, m_data + m_index, dataSize);
-            return true;
-        }
-        return false;
+        return Insert(bufferToInsert.Get(), bufferToInsert.GetIndex());
+    }
+
+    bool Buffer::CopyFrom(const Buffer& bufferCpy)
+    {
+        Reset();
+        return Insert(bufferCpy);
     }
 
     void Buffer::Reset()

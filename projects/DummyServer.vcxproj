@@ -23,32 +23,32 @@
     <ProjectGuid>{014DE840-32EC-4E12-A0CF-E010714E158A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DummyServer</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -72,29 +72,30 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)tmp\$(PlatformName)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(PlatformName)\</OutDir>
+    <IntDir>$(SolutionDir)tmp\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformName)_$(Configuration)</TargetName>
     <IncludePath>$(SolutionDir)source;$(IncludePath)</IncludePath>
+    <SourcePath>$(SolutionDir)source;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)tmp\$(PlatformName)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)tmp\$(PlatformName)\$(Configuration)\$(ProjectName)</IntDir>
     <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformName)_$(Configuration)</TargetName>
     <IncludePath>$(SolutionDir)source;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)tmp\$(PlatformName)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)tmp\$(PlatformName)\$(Configuration)\$(ProjectName)</IntDir>
     <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformName)_$(Configuration)</TargetName>
     <IncludePath>$(SolutionDir)source;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)tmp\$(PlatformName)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)tmp\$(PlatformName)\$(Configuration)\$(ProjectName)</IntDir>
     <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformName)_$(Configuration)</TargetName>
     <IncludePath>$(SolutionDir)source;$(IncludePath)</IncludePath>
   </PropertyGroup>
@@ -106,6 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -175,7 +177,12 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ProjectReference Include="Wave.vcxproj">
+      <Project>{c6336051-3f88-4bcf-8084-60d05c34ed89}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\Test\DummyServer\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

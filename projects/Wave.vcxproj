@@ -87,6 +87,9 @@
     <IntDir>$(SolutionDir)tmp\$(PlatformName)\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformName)_$(Configuration)</TargetName>
     <IncludePath>$(SolutionDir)source;$(IncludePath)</IncludePath>
+    <SourcePath>$(SolutionDir)source;$(SourcePath)</SourcePath>
+    <PublicIncludeDirectories>
+    </PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
@@ -100,6 +103,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <BuildLog>
       <Path>$(IntDir)log\$(MSBuildProjectName).log</Path>

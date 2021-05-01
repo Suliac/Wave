@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2042
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wave", "projects\Wave.vcxproj", "{C6336051-3F88-4BCF-8084-60D05C34ED89}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DummyClient", "projects\DummyClient.vcxproj", "{733FC7EC-3863-4C04-8AEA-7DE909132496}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DummyServer", "source\Test\DummyServer\DummyServer.vcxproj", "{014DE840-32EC-4E12-A0CF-E010714E158A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DummyServer", "projects\DummyServer.vcxproj", "{014DE840-32EC-4E12-A0CF-E010714E158A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTests", "projects\UnitTests.vcxproj", "{4D3D501E-DD92-4236-BDCA-4C81E527D207}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,14 @@ Global
 		{014DE840-32EC-4E12-A0CF-E010714E158A}.Release|x64.Build.0 = Release|x64
 		{014DE840-32EC-4E12-A0CF-E010714E158A}.Release|x86.ActiveCfg = Release|Win32
 		{014DE840-32EC-4E12-A0CF-E010714E158A}.Release|x86.Build.0 = Release|Win32
+		{4D3D501E-DD92-4236-BDCA-4C81E527D207}.Debug|x64.ActiveCfg = Debug|x64
+		{4D3D501E-DD92-4236-BDCA-4C81E527D207}.Debug|x64.Build.0 = Debug|x64
+		{4D3D501E-DD92-4236-BDCA-4C81E527D207}.Debug|x86.ActiveCfg = Debug|Win32
+		{4D3D501E-DD92-4236-BDCA-4C81E527D207}.Debug|x86.Build.0 = Debug|Win32
+		{4D3D501E-DD92-4236-BDCA-4C81E527D207}.Release|x64.ActiveCfg = Release|x64
+		{4D3D501E-DD92-4236-BDCA-4C81E527D207}.Release|x64.Build.0 = Release|x64
+		{4D3D501E-DD92-4236-BDCA-4C81E527D207}.Release|x86.ActiveCfg = Release|Win32
+		{4D3D501E-DD92-4236-BDCA-4C81E527D207}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
