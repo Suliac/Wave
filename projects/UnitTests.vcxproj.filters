@@ -3,11 +3,22 @@
   <ItemGroup>
     <ClCompile Include="..\source\Test\UnitTests\pch.cpp" />
     <ClCompile Include="..\source\Test\UnitTests\testTransport.cpp" />
+    <ClCompile Include="..\source\Test\UnitTests\Fake\FakeUdpSocket.cpp">
+      <Filter>Fake</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\Test\UnitTests\pch.h" />
+    <ClInclude Include="..\source\Test\UnitTests\Fake\FakeUdpSocket.h">
+      <Filter>Fake</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\source\Test\UnitTests\packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Fake">
+      <UniqueIdentifier>{d88fff0f-3da2-48aa-acf1-4305aace9ced}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

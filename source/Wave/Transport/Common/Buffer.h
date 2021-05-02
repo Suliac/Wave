@@ -15,14 +15,20 @@ namespace Wave
         Buffer(const Buffer& cpy);
 
         /**
-         * \brief Insert data (as copy) at current index, and increase the index
+         * \brief Insert data (as copy) at current index, and increase the index. It doesn't insert anything if too much data is inserted !
          *
          * \param dataToInsert the data we want to add to our buffer, should be an array of uint8_t
          * \param dataSize the size of the data we want to take from dataToInsert
-         * \return true if we successfully inserted the data
+         * \return true if we successfully inserted the data (we didn't overflow our buffer)
          */
         bool Insert(const uint8_t* dataToInsert, size_t dataSize);
 
+        /**
+         * \brief Insert another buffer inside our current one at current index
+         *
+         * \param bufferToInsert the buffer we want to add to our current buffer
+         * \return true if we successfully inserted the data (we didn't overflow our buffer)
+         */
         bool Insert(const Buffer& bufferToInsert);
 
         /**
@@ -32,6 +38,7 @@ namespace Wave
          * \return true if we successfully copied the data
          */
         bool CopyFrom(const Buffer& bufferToCpy);
+
 
         void Reset();
 
@@ -56,7 +63,6 @@ namespace Wave
          * \brief Get the current index for our buffer, each Insert is increasing the index
          *
          * \return our current index value
-         * \sa Insert(...)
          */
         inline size_t GetIndex() const { return m_index; }
         

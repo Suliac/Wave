@@ -63,14 +63,14 @@ namespace Wave
 
     SocketResult UdpSocket_Windows::SendTo(const Datagram& datagram, int32_t size) const
     {
-        if (datagram.Buffer.Size() <= size)
+        if (datagram.BufferSize() <= size)
         {
             sockaddr_in addr;
             addr.sin_family = AF_INET;
-            addr.sin_addr.s_addr = htonl(datagram.EndPoint.GetAddress());
-            addr.sin_port = htons(datagram.EndPoint.GetPort());
+            addr.sin_addr.s_addr = htonl(datagram.GetAddress());
+            addr.sin_port = htons(datagram.GetPort());
 
-            int32_t sentBytes = sendto(m_handle, (const char*)datagram.Buffer.Get(), size, 0 /* flags */, (sockaddr*)&addr, sizeof(sockaddr_in));
+            int32_t sentBytes = sendto(m_handle, (const char*)datagram.GetData(), size, 0 /* flags */, (sockaddr*)&addr, sizeof(sockaddr_in));
             if (sentBytes != size)
             {
                 LogLastSocketError();
@@ -85,7 +85,7 @@ namespace Wave
 
     SocketResult UdpSocket_Windows::SendTo(const Datagram& datagram) const
     {
-        return SendTo(datagram, (int32_t)datagram.Buffer.Size());
+        return SendTo(datagram, (int32_t)datagram.BufferSize());
     }
 
     SocketResult UdpSocket_Windows::ReceiveFrom(Datagram& datagram, int32_t& bytesRecv)
@@ -95,10 +95,10 @@ namespace Wave
         sockaddr_in from;
         socklen_t fromLength = sizeof(from);
 
-        bytesRecv = recvfrom(m_handle, (char*)datagram.Buffer.GetPtr(), (int32_t)datagram.Buffer.Size(), 0, (sockaddr*)&from, &fromLength);
+        bytesRecv = recvfrom(m_handle, (char*)datagram.GetDataPtr(), (int32_t)datagram.BufferSize(), 0, (sockaddr*)&from, &fromLength);
         if (bytesRecv > 0)
         {
-            datagram.EndPoint.SetAddr(ntohl(from.sin_addr.s_addr), ntohs(from.sin_port));
+            datagram.SetAddr(ntohl(from.sin_addr.s_addr), ntohs(from.sin_port));
         }
 
         return SocketResult::OK;
